@@ -1,6 +1,9 @@
-import { FeatureCollection, Geometry, GeoJsonProperties } from 'geojson';
+import { FeatureCollection, Geometry, Point } from 'geojson';
 
-let staticBreadcrumbs: FeatureCollection<Geometry, GeoJsonProperties>;
+let staticBreadcrumbs: FeatureCollection<Geometry>;
+
+// This works if we are only using `Point` types.
+// let staticBreadcrumbs: FeatureCollection<Point>;
 
 staticBreadcrumbs = {
     type: 'FeatureCollection',
@@ -36,3 +39,7 @@ if (geometry.type === 'Point') {
     const coordinates01 = geometry.coordinates[1];
 }
 
+if (staticBreadcrumbs.features[0].geometry.type === 'Point') {
+    const coordinates00 = staticBreadcrumbs.features[0].geometry.coordinates[0];
+    const coordinates01 = staticBreadcrumbs.features[0].geometry.coordinates[1];
+}
